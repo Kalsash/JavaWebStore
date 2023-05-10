@@ -1,18 +1,33 @@
 package com.example.JavaWebStore.models;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+@Entity
+@Table(name = "products")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    private String title;
-    private String description;
-    private int price;
-    private String city;
-    private String author;
 
-    public Product() {
-    }
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "description", columnDefinition = "text")
+    private String description;
+
+    @Column(name = "price")
+    private int price;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "author")
+    private String author;
 
     public Long getId() {
         return this.id;
